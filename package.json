@@ -12,6 +12,8 @@
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -40,5 +42,8 @@
   },
   "devDependencies": {
     "axios": "^0.27.2"
-  }
+  },
+  "proxy": "http://localhost:3000",
+  "homepage": "."
+
 }

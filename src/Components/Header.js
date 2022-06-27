@@ -1,7 +1,11 @@
 import React from "react";
 import {Navbar, Nav, Row, Col, Container, NavDropdown} from "react-bootstrap";
+import {Routes, Route, Link} from "react-router-dom";
+import AboutPage from "./AboutPage"
+import NotFoundPage from "./NotFoundPage"
+import HomePage from "./HomePage";
 
-export default function Header() {
+function Header() {
 
     return (
         <>
@@ -10,14 +14,14 @@ export default function Header() {
                 <Col sm={2}>
                     <Row>
                         <Col>
-                            <a href="/home">DCU</a>
+                            <a href="/">DCU</a>
                         </Col>
                         <Col className="text-end">
                             <i className="bi bi-bell"/>
                         </Col>
                     </Row>
                 </Col>
-                <Col sm={4}>
+                <Col className="bg-light" sm={4}>
                     <Row>
                         <Col>
                             <Navbar>
@@ -30,11 +34,9 @@ export default function Header() {
                                                 id="nav-dropdown-example"
                                                 title="Newest first"
                                             >
-                                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                                <NavDropdown.Item href="#action/3.1">Latest</NavDropdown.Item>
                                                 <NavDropdown.Divider />
-                                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                                            {/*    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>*/}
                                             </NavDropdown>
                                         </Nav>
                                     </Navbar.Collapse>
@@ -48,15 +50,24 @@ export default function Header() {
                         </Col>
                     </Row>
                 </Col>
-                <Col sm={6} className={"text-end"}>
+                <Col sm={6} className={"text-end bg-light"}>
+                    <span>
+
+                        <Link to="/">Home</Link> |{" "}&nbsp;&nbsp;
+                        <Link to="/posts">Blog</Link> |{" "}
+                        {/*<a href="/blog" className={"text-end"}>Blog</a>&nbsp;&nbsp;*/}
+                        <Link to="/about" className={"text-end"}>About</Link>&nbsp;&nbsp;
+                    </span>
+                    &nbsp;&nbsp;
                     <span>
                         i<em>g</em>
                     </span>
                 </Col>
             </Row>
 </Container>
-        </>)
+
+        </>
+    );
 }
 
-
-
+export default Header;

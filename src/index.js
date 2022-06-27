@@ -3,11 +3,34 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import AboutPage from "./Components/AboutPage";
+import HomePage from "./Components/HomePage";
+import {BlogPage} from "./Components/BlogPage";
+import NotFoundPage from "./Components/NotFoundPage";
+
+import {SinglePage} from "./Components/SinglePage";
+import {Layout} from "./Components/Layout";
+import {CreatePost} from "./Components/CreatePost";
+import {EditPost} from "./Components/EditPost";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <BrowserRouter>
+          <Routes>
+              {/*<Route path="/" element={<App />}/>*/}
+              <Route path="/" element={<Layout />}/>
+              {/*<Route index element={<HomePage />} />*/}
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/about-us" element={<Navigate to={"/about"} replace/>} />
+              <Route path="/posts" element={<BlogPage />} />
+              <Route path="/posts/:id" element={<SinglePage />} />
+              <Route path="/posts/:id/edit" element={<EditPost />} />
+              <Route path="/posts/new" element={<CreatePost />} />
+              <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+      </BrowserRouter>
   </React.StrictMode>
 );
 
