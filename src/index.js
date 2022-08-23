@@ -13,13 +13,21 @@ import {SinglePage} from "./Components/SinglePage";
 import {Layout} from "./Components/Layout";
 import {CreatePost} from "./Components/CreatePost";
 import {EditPost} from "./Components/EditPost";
+import {Provider} from "react-redux";
+import {PersistGate} from "redux-persist/integration/react";
+import store, {persistor} from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
 root.render(
   <React.StrictMode>
       <BrowserRouter>
+          <Provider store={store}>
+              <PersistGate loading={null} persistor={persistor}>
           <Routes>
-              {/*<Route path="/" element={<App />}/>*/}
+
+                  {/*<Route path="/" element={<App />}/>*/}
               <Route path="/" element={<Layout />}/>
               {/*<Route index element={<HomePage />} />*/}
               <Route path="/about" element={<AboutPage />} />
@@ -29,7 +37,10 @@ root.render(
               <Route path="/posts/:id/edit" element={<EditPost />} />
               <Route path="/posts/new" element={<CreatePost />} />
               <Route path="*" element={<NotFoundPage />} />
+
           </Routes>
+              </PersistGate>
+          </Provider>
       </BrowserRouter>
   </React.StrictMode>
 );

@@ -50,4 +50,14 @@ li {
 ul {
   margin-left: 0; /* Отступ слева в браузере */
   padding-left: 0; /* Отступ слева в браузере Firefox, Safari, Chrome */
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.delete {
+  color: red;
+  cursor: pointer;
+}
+input:checked + span {
+  text-decoration: line-through;
 }
